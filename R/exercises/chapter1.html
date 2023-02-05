@@ -59,13 +59,26 @@ ggplot(data = mpg, mapping = aes(x = drv, y = class)) +
         </pre>
         <img alt="class-drv scatterplot" src="chapter1 images/class_drv_scatterplot.jpeg" />
         <p>By plotting two discrete variables against each other, especially those with such a small number of values, we can only draw limited conclusions from the graph. We can see
-          which combinations of vehicle class and drivetrain were present in the sample of vehicles, and that's about it.
+          which combinations of vehicle class and drive wheel were present in the sample of vehicles, and that's about it.
         </p>
       </details>
 
     </section>
 
     <section>
+      <h3>Aesthetic Mappings</h3>
+      <details>
+        <summary>
+          1. What's gone wrong with this code? Why are the points not blue?
+          <pre>
+            <code>
+ggplot(data = mpg) + 
+ geom_point(mapping = aes(x = displ, y = hwy, colour = "blue"))
+            </code>
+          </pre>
+        </summary>
+        <p>dvgdfjnvkjdfnvkj</p>
+      </details>
 
     </section>
 </body>
