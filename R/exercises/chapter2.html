@@ -18,5 +18,42 @@
         <h3>R4DS Chapter 2 - Workflow: Basics</h3>
         <p>Chapter 2 briefly covers the syntax, and basic operation of R</p>
     </article>
+    <section>
+      <h3>Calling Functions</h3>
+      <details>
+        <summary>1. Why does this code not work?</summary>
+        <pre>
+          <code>
+my_variable <- 10
+ my_varıable            
+          </code>
+        </pre>
+        <p>Upon calling <code>my_varıable</code>, you may expect to receive <i>10</i>, but will instead recieve an error.
+           The 'i' in <code>my_varıable</code> is a slightly different character. 
+        </p>
+      </details>
+      <details>
+        <summary>2. Tweak each of the following R commands so that they run correctly:</summary>
+        <pre>
+          <code>
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))           
+          </code>
+        </pre>
+        <p>Here <code>data</code> has been misspelled as <code>dota</code></p>
+        <pre>
+          <code>
+fliter(mpg, cyl = 8)          
+          </code>
+        </pre>
+        <p>Here <code>filter</code> has been misspelled and <code>=</code> has been used instead of <code>==</code></p> 
+        <pre>
+          <code>
+filter(diamond, carat > 3)         
+          </code>
+        </pre>
+        <p>The dataset we need is called <code>diamonds</code>, the code here calls on <code>diamond</code> instead.</p>               
+      </details>
+    </section>
 </body>
 </html>
