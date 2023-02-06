@@ -69,15 +69,14 @@ ggplot(data = mpg, mapping = aes(x = drv, y = class)) +
       <h3>Aesthetic Mappings</h3>
       <details>
         <summary>
-          1. What's gone wrong with this code? Why are the points not blue?
-          <pre>
+          1. What's gone wrong with this code? Why are the points not blue? 
             <code>
-ggplot(data = mpg) + 
- geom_point(mapping = aes(x = displ, y = hwy, colour = "blue"))
+ggplot(data=mpg) + 
+ geom_point(mapping=aes(x=displ, y=hwy, colour="blue"))
             </code>
-          </pre>
+          <img alt="hwy_displ scatterplot orange" src="hwy_displ_scatterplot.jpeg" />
         </summary>
-        <p>dvgdfjnvkjdfnvkj</p>
+        <p>By placing <code>colour</code> inside the <code>aes</code>, you are assigning the colour of the points to a variable. To change the colour of the points, you should instead ass</p>
       </details>
 
     </section>
