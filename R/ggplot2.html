@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ggplot2</title>
+    <link rel="stylesheet" type="text/css" href="/simple.css">
+</head>
+<body>
+    <header>
+        <h1>SCLFR Website</h1>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/R.html">R</a>
+        </nav>
+      </header>
+    <article>
+      <h3>A collection of ggplot2 ideas</h3>
+      <p>ggplot2 is an R package, used to create precise and versatile graphics.</p>
+    </article>
+
+    <p><b>ggplot2</b> is a package, itself contained within the <b>tidyverse</b> collection of packages. To use it we must first install the tidyverse package.</p>
+    <code>install.packages("tidyverse")</code>
+    <p>Once installed, we can then call on the package whenever we need using the following line.</p>
+    <code>library(tidyverse)</code>
+
+    <section>
+      <h3>How to use the index of a data frame as a variable</h3>
+      <p>The rows of a <code>dataframe</code> are indexed by numbers <code>1 2 3 ...</code>. We can use <code>UKDriverDeaths</code> 
+        as an example. This data set is a <code>timeseries</code>, so we first need to convert it into a <code>dataframe</code></p>
+      <pre>
+        <code>
+df <- as.data.frame(UKDriverDeaths) ; colnames(df) <- 'deaths'
+        </code>
+      </pre>
+      <p>Here, we have converted <code>UKDriverDeaths</code> into a <code>dataframe</code>, and renamed its column to <i>deaths</i>.
+       If we had more columns, we could use <code>colnames(df) <- c('name1', 'name2', 'name3', ...)</code></p>
+      <p>Calling <code>df</code>, we see a <code>dataframe</code> with only one column, <i>deaths</i>, and the index of each observation on the left.</p>
+      <pre>
+     deaths
+1     1687
+2     1508
+3     1507
+4     1385
+5     1632      
+...
+191   1737
+192   1763
+      </pre>
+      <p>Now <b>ggplot2</b> will not take the index as an argument without some slight manipulation</p>
+      <p><code>as.numeric(row.names(df))</code> first creates a vector of these row names, and makes all elements of the vector <code>numeric</code>, 
+      allowing them to be used by <b>ggplot2</b> as a variable.</p> 
+      <pre>
+        <code>
+ggplot(data=df, mapping=aes(x=as.numeric(row.names(df)), y=deaths)) +
+  geom_line() + 
+  geom_smooth(se=FALSE)
+        </code>
+      </pre>
+      <img alt="index_as_variable_ggplot2" src="index_as_variable_ggplot2.jpeg" />
+
+    </section>
+
+
+
+</body>
+</html>
