@@ -15,7 +15,7 @@
         </nav>
       </header>
     <article>
-      <h3>A collection of ggplot2 ideas</h3>
+      <h3>A Collection of ggplot2 Ideas</h3>
       <p>ggplot2 is an R package, used to create precise and versatile graphics.</p>
     </article>
 
@@ -26,15 +26,17 @@
 
     <section>
       <h3>How to use the index of a data frame as a variable</h3>
-      <p>The rows of a <code>dataframe</code> are indexed by numbers <code>1 2 3 ...</code>. We can use <code>UKDriverDeaths</code> 
-        as an example. This data set is a <code>timeseries</code>, so we first need to convert it into a <code>dataframe</code></p>
+      <p>The rows of a <code>dataframe</code> are indexed by numbers <i>1 2 3 ...</i>. We can use <b>UKDriverDeaths</b> 
+        as an example. This data set is a <code>timeseries</code>, so we first need to convert it into a <code>dataframe</code>, so that <b>ggplot2</b> can process it.</p>
       <pre>
         <code>
-df <- as.data.frame(UKDriverDeaths) ; colnames(df) <- 'deaths'
+df <- as.data.frame(UKDriverDeaths) 
+colnames(df) <- 'deaths'
         </code>
       </pre>
-      <p>Here, we have converted <code>UKDriverDeaths</code> into a <code>dataframe</code>, and renamed its column to <i>deaths</i>.
-       If we had more columns, we could use <code>colnames(df) <- c('name1', 'name2', 'name3', ...)</code></p>
+      <p>Here, we have converted <b>UKDriverDeaths</b> into a <code>dataframe</code>, and renamed its column to <i>deaths</i>.
+       If we had more columns, we could assign the column names to a vector containing your chosen names instead.</p> 
+      <code>colnames(df) <- c('name1', 'name2', 'name3', ...)</code>
       <p>Calling <code>df</code>, we see a <code>dataframe</code> with only one column, <i>deaths</i>, and the index of each observation on the left.</p>
       <pre>
      deaths
@@ -48,8 +50,9 @@ df <- as.data.frame(UKDriverDeaths) ; colnames(df) <- 'deaths'
 192   1763
       </pre>
       <p>Now <b>ggplot2</b> will not take the index as an argument without some slight manipulation</p>
-      <p><code>as.numeric(row.names(df))</code> first creates a vector of these row names, and makes all elements of the vector <code>numeric</code>, 
-      allowing them to be used by <b>ggplot2</b> as a variable.</p> 
+      <p>We first create a vector containing the row names of the <code>dataframe</code>, and then make all elements of the resulting vector numeric.</p>
+      <code>as.numeric(row.names(df))</code>
+      <p>We can now apply this in a basic <b>ggplot2</b> graph.</p>
       <pre>
         <code>
 ggplot(data=df, mapping=aes(x=as.numeric(row.names(df)), y=deaths)) +
@@ -58,6 +61,8 @@ ggplot(data=df, mapping=aes(x=as.numeric(row.names(df)), y=deaths)) +
         </code>
       </pre>
       <img alt="index_as_variable_ggplot2" src="index_as_variable_ggplot2.jpeg" />
+      <p>The original <code>timeseries</code> contained observations of data from every month for 16 years, starting in 1969. Thus, the <i>x-axis</i> of our graph 
+      now represents the number of months after this starting date, and the <i>y-axis</i> represents the number of UK drivers killed or seriously injured that month. </p>
 
     </section>
 
